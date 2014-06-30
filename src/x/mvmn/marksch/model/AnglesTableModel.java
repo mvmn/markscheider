@@ -16,7 +16,7 @@ public class AnglesTableModel extends AbstractTableModel {
 	private static final long serialVersionUID = 8671339960785999368L;
 	private List<AngleDefinition> data = new ArrayList<AngleDefinition>();
 
-	private static final String[] COLUMN_NAMES = { "#", "º", "'", "\"", "Rad" };
+	private static final String[] COLUMN_NAMES = { "#", "º", "'", "\"", "Радиан" };
 
 	private SumChangeListener sumChangeListener;
 
@@ -56,7 +56,7 @@ public class AnglesTableModel extends AbstractTableModel {
 				result = data.get(row).getSeconds();
 			break;
 			case 4:
-				result = String.format("%s", data.get(row).getRadians());
+				result = String.format("%.8f", data.get(row).getRadians());
 			break;
 			default:
 				result = row + 1;

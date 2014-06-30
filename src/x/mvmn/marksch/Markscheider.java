@@ -39,7 +39,7 @@ public class Markscheider implements AngleInputCallback, SumChangeListener {
 
 	// private double sum = 0;
 
-	private final JLabel sumLabel = new JLabel("Sum = 0");
+	private final JLabel sumLabel = new JLabel("Сумма = 0");
 
 	private final JMenuBar mainMenu;
 	private final JMenu menuFile;
@@ -48,10 +48,10 @@ public class Markscheider implements AngleInputCallback, SumChangeListener {
 
 	public Markscheider() {
 		mainMenu = new JMenuBar();
-		menuFile = new JMenu("File");
+		menuFile = new JMenu("Файл");
 		mainMenu.add(menuFile);
-		menuItemLoad = new JMenuItem("Load");
-		menuItemSave = new JMenuItem("Save");
+		menuItemLoad = new JMenuItem("Загрузить...");
+		menuItemSave = new JMenuItem("Сохранить...");
 		menuFile.add(menuItemLoad);
 		menuFile.add(menuItemSave);
 
@@ -159,7 +159,7 @@ public class Markscheider implements AngleInputCallback, SumChangeListener {
 					int rowCount = Markscheider.this.tableModel.getRowCount();
 					if (rowCount > 0) {
 						double totalDelta = Markscheider.this.tableModel.getSum();
-						if (totalDelta > Math.PI) {
+						if (totalDelta > Math.PI * 2) {
 							totalDelta -= Math.PI * 2;
 						}
 						if ((int) (totalDelta * 100000) > 0) {
@@ -201,7 +201,7 @@ public class Markscheider implements AngleInputCallback, SumChangeListener {
 	public void sumChanged(final double newSum) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				sumLabel.setText("Sum = " + new AngleDefinition(newSum).toString());
+				sumLabel.setText("Сумма = " + new AngleDefinition(newSum).toString());
 			}
 		});
 	}
